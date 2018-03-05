@@ -1,0 +1,47 @@
+DL1: DRIFT, L=3.378695;
+DL2: DRIFT, L=0.4345;
+DL3: DRIFT, L=0.348698;
+DL4: DRIFT, L=0.7431993;
+DL5: DRIFT, L=1.0181981;
+
+!BD: RBEN, L=0.86514, ANGLE=0.0872664, K1=-0.7782;
+EDGE: Quad, L=1e-16, K= -1.7649920668e14;
+BDCORE: BEND, L=0.86514, T=0.17453292519943295; 
+!, K=-0.7782;
+BD: LINE=(EDGE, BDCORE, EDGE);
+
+!QF: QUAD, L=0.344, K=2.48;
+!QD: QUAD, L=0.187, K=-2.56;
+!QFA: QUAD, L=0.448, K=3.02;
+
+QF: QUAD, L=0.344, K=-2.346666;
+QD: QUAD, L=0.187, K=6.479778;
+QFA: QUAD, L=0.448, K=-7.129787;
+
+!QFL: QUAD, L=0.344, K= 2.933385;
+!QFR: QUAD, L=0.344, K= 2.124242;
+
+!QDL: QUAD, L=0.187, K=-1.933063;
+!QDR: QUAD, L=0.187, K=-1.235752;
+
+!QFAL: QUAD, L=0.448, K=3.000538;
+!QFAR: QUAD, L=0.448, K=2.965474;
+
+!CELL: LINE=( DL1, QFL, DL2, QDL, DL3, BD, DL4, QFAL, &
+!DL5, BD, DL5, QFAR, DL4, BD, DL3, QDR, DL2, QFR, DL1);
+CELL: LINE=(DL1, QF, DL2, QD, DL3, BD, DL4, QFA, DL5, BD, DL5, QFA, DL4, BD, DL3, QD, DL2, QF, DL1);
+HP: LINE=(CELL, -CELL) ;
+RING: LINE=( 6*(CELL,-CELL) );
+
+!USE, CELL
+!select, optics, full;
+!TWISS, DELTAP=0.0, SAVE;
+!sectormap, filename='sectormap.dat', deltap=0.0
+
+!USE, HP
+!print, #s/E
+!TWISS, DELTAP=0.0, save
+!PLOT,table=twiss, HAXIS=s,VAXIS=betx,bety,dx,spline,colour=100,filename="als"
+!plot, table=twiss, haxis=s, vaxis1=betx,bety, &
+!  vaxis2=dx,spline,colour=100, filename="als"
+

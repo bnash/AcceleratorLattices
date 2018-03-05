@@ -1,0 +1,447 @@
+{*******************************}
+{*                             *}
+{*  SOLEIL Storage Ring        *}
+{*  The IDEAL LATTICE updated  *}
+{*                             *}
+{* QUAD coupes en 2            *}
+{* SEPTUM sur 70 cm coupe en 4 *}
+{* SD moyenne coupee en        *}
+{* troncons de 20 cm           *}
+{* Long sextupoles             *}
+{*                             *}
+{*******************************}
+
+define lattice;
+
+intmeth= 4;
+driftkick = 2;
+
+{***** System parameters *****}
+Energy= 2.739;    { GeV }
+dP    = 1.0d-10;
+CODeps= 1.0d-15;
+
+{***** drift space *****}
+
+ SDL  : drift, L= 6.000000-0.0201;
+ SD1a : drift, L= 0.900000;
+ SD1b : drift, L= 4.300000;
+ SD1c : drift, L= 3.700000;
+ SD1d : drift, L= 0.800000-0.0201;
+ SD1e : drift, L= 0.9609;
+ SD1f : drift, L= 2.7391;
+ SD1g : drift, L= 0.2629;
+ SD1h : drift, L= 0.517;
+ SEP  : drift, L= 0.200000;
+ SD2  : drift, L= 0.390000-0.08-0.0201;
+ SD3  : drift, L= 0.200000-0.08-0.0181;
+ SD4  : drift, L= 0.390000-0.08-0.0181;
+ SD5  : drift, L= 0.200000-0.08-0.0201;
+ SD6  : drift, L= 0.790000-0.08;
+ SD7  : drift, L= 0.440000-0.0201;
+ SD8  : drift, L= 0.200000-0.08-0.0201;
+ SD9  : drift, L= 0.476340-0.08-0.0201;
+ SD10 : drift, L= 0.470000-0.08-0.0201;
+ SD12 : drift, L= 0.470000-0.08-0.0201;
+ SDM:   drift, L= 3.48255-0.0201;
+ SD13a: drift, L= 0.200000;
+ SD13b: drift, L= 0.150000;
+ SD13c: drift, L= 0.732550-0.0201;
+ SD14 : drift, L= 0.590000-0.0181-0.0201;
+ SDAC : drift, L= 1.904680;
+ SDC :  drift, L= 1.904680-0.08;
+ SDAC1: drift, L= 1.004680;
+ SDAC4: drift, L= 1.004680-0.08;
+ SDAC2: drift, L= 0.200000;
+ SDAC3: drift, L= 0.100000;
+ SDACm: drift, L= 1.904680-1.80/2;
+ SD1N : drift,  L= 0.2309400E+01;
+ SD2N : drift,  L= 0.4618000E+00;
+ SDB1 : drift,  L= 0.2910000E+00;
+ SDB2 : drift,  L= 0.1668000E+00;
+ SDMM:  drift, L= (3.48255-0.0201)/2;
+ 
+ {***** drift space pour installer les SQ dans les insertions *****}
+ 
+ SDCA :  drift, L= 1.904680-0.08+0.080;
+ SDCB :  drift, L= 1.904680-0.08-0.080;
+
+ SDMA4:   drift, L= (3.48255-0.0201)-1.85;
+ SDMB4:   drift, L= 1.85 ;
+ SDMC4:   drift, L= 0.8945;
+ SDMD4:   drift, L= (3.48255-0.0201)-0.8945;
+ 
+ SDMA7:   drift, L= (3.48255-0.0201)-0.340;
+ SDMB7:   drift, L= 0.340;
+ SDMC7:   drift, L= 1.626;
+ SDMD7:   drift, L= (3.48255-0.0201)-1.626;
+ 
+ SDMA8:   drift, L= (3.48255-0.0201)-0.4165;
+ SDMB8:   drift, L= 0.4165;
+ SDMC8:   drift, L= 1.3325;
+ SDMD8:   drift, L= (3.48255-0.0201)-1.3325;
+ 
+ SDMA10:   drift, L= (3.48255-0.0201)-0.0;
+ SDMB10:   drift, L= 0.0;
+ SDMC10:   drift, L= 1.849;
+ SDMD10:   drift, L= (3.48255-0.0201)-1.849;
+ 
+ SDMA11:   drift, L= (3.48255-0.0201)-0.0;
+ SDMB11:   drift, L= 0.0;
+ SDMC11:   drift, L= 1.520;
+ SDMD11:   drift, L= (3.48255-0.0201)-1.520;
+ 
+ SDMA12:   drift, L= (3.48255-0.0201)-1.830;
+ SDMB12:   drift, L= 1.830;
+ SDMC12:   drift, L= 0.8945;
+ SDMD12:   drift, L= (3.48255-0.0201)-0.8945;
+ 
+ SDMA14:   drift, L= (3.48255-0.0201)-0.0;
+ SDMB14:   drift, L= 0.0;
+ SDMC14:   drift, L= 1.746;
+ SDMD14:   drift, L= (3.48255-0.0201)-1.746;
+ 
+ SDMA15:   drift, L= (3.48255-0.0201)-1.830;
+ SDMB15:   drift, L= 1.830;
+ SDMC15:   drift, L= 0.8145;
+ SDMD15:   drift, L= (3.48255-0.0201)-0.8145;
+
+{** Quadrupole **}
+Nq=8/2;  {Number of slices}
+dgsurg=1.00;
+dgsurgL=1.00;
+quadfringe=1.0;
+scale=0.5;
+LQC=0.3602;
+LQL=0.4962;
+
+  QI1a  : quadrupole, L=LQC/2,K= -1.148605e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+  QI2a  : quadrupole, L=LQL/2,K=  1.698188e+00*dgsurgL,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+  QI3a  : quadrupole, L=LQC/2,K= -8.977849e-01*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+  QI4a  : quadrupole, L=LQC/2,K= -1.032541e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+  QI5a  : quadrupole, L=LQC/2,K=  1.776718e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QI51a  : quadrupole, L=LQC/2,K=  1.551736e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QP1Na  : quadrupole, L=LQC/2,K= -1.336224e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QP2Na  : quadrupole, L=LQL/2,K=  1.874242e+00*dgsurgL,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QP3Na  : quadrupole, L=LQC/2,K= -1.126772e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QPS1a  : quadrupole, L=LQC/2,K= -1.671113e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+ QPS2a  : quadrupole, L=LQL/2,K=  1.667791e+00*dgsurgL,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+
+   Q1a  : quadrupole, L=LQC/2,K= -1.210124e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q2a  : quadrupole, L=LQL/2,K=  1.687181e+00*dgsurgL,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q3a  : quadrupole, L=LQC/2,K= -6.375736e-01*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q4a  : quadrupole, L=LQC/2,K= -1.229389e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q5a  : quadrupole, L=LQC/2,K=  1.713696e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q6a  : quadrupole, L=LQC/2,K= -1.163583e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q7a  : quadrupole, L=LQL/2,K=  2.034258e+00*dgsurgL,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q8a  : quadrupole, L=LQC/2,K= -1.357527e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+   Q9a  : quadrupole, L=LQC/2,K= -1.356975e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+  Q10a  : quadrupole, L=LQC/2,K=  1.736498e+00*dgsurg,  FF1=quadfringe, FF2=0,FFscaling = scale, method=intmeth,N=Nq; 
+
+  QI1b  : quadrupole, L=LQC/2,K= -1.148605e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+  QI2b  : quadrupole, L=LQL/2,K=  1.698188e+00*dgsurgL,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+  QI3b  : quadrupole, L=LQC/2,K= -8.977849e-01*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+  QI4b  : quadrupole, L=LQC/2,K= -1.032541e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+  QI5b  : quadrupole, L=LQC/2,K=  1.776718e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QI51b  : quadrupole, L=LQC/2,K=  1.551736e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QP1Nb  : quadrupole, L=LQC/2,K= -1.336224e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QP2Nb  : quadrupole, L=LQL/2,K=  1.874242e+00*dgsurgL,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QP3Nb  : quadrupole, L=LQC/2,K= -1.126772e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QPS1b  : quadrupole, L=LQC/2,K= -1.671113e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ QPS2b  : quadrupole, L=LQL/2,K=  1.667791e+00*dgsurgL,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+ 
+   Q1b  : quadrupole, L=LQC/2,K= -1.210124e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q2b  : quadrupole, L=LQL/2,K=  1.687181e+00*dgsurgL,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q3b  : quadrupole, L=LQC/2,K= -6.375736e-01*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q4b  : quadrupole, L=LQC/2,K= -1.229389e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q5b  : quadrupole, L=LQC/2,K=  1.713696e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q6b  : quadrupole, L=LQC/2,K= -1.163583e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q7b  : quadrupole, L=LQL/2,K=  2.034258e+00*dgsurgL,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q8b  : quadrupole, L=LQC/2,K= -1.357527e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+   Q9b  : quadrupole, L=LQC/2,K= -1.356975e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+  Q10b  : quadrupole, L=LQC/2,K=  1.736498e+00*dgsurg,  FF1=0, FF2=quadfringe,FFscaling = scale, method=intmeth,N=Nq; 
+
+{** quad split into two parts **}
+Q1 : Q1a,Q1b;
+Q2 : Q2a,Q2b;
+Q3 : Q3a,Q3b;
+Q4 : Q4a,Q4b;
+Q5 : Q5a,Q5b;
+Q6 : Q6a,Q6b;
+Q7 : Q7a,Q7b;
+Q8 : Q8a,Q8b;
+Q9 : Q9a,Q9b;
+Q10: Q10a,Q10b;
+Q1N: QP1Na,QP1Nb;
+Q2N: QP2Na,QP2Nb;
+Q3N: QP3Na,QP3Nb;
+QS1: QPS1a,QPS1b;
+QS2: QPS2a,QPS2b;
+Q1i : QI1a,QI1b;
+Q2i : QI2a,QI2b;
+Q3i : QI3a,QI3b;
+Q4i : QI4a,QI4b;
+Q5i : QI5a,QI5b;
+Q51i : QI51a,QI51b;
+
+{** bending **}
+beta_gap=37e-3;
+tracy_gap=beta_gap*2*0.724;
+
+ BEND1 : bending, L= 1.05243, T= 11.25, T1=5.5906, T2=5.67658, K=0.00204, N=4,
+        method=intmeth,gap=tracy_gap;
+
+ BEND2 : bending, L= 1.052436*0.5/11.25, T= 0.5, T1=5.5906, T2=0.000, K=0.00204, N=4,
+        method=intmeth,gap=tracy_gap;
+ BEND3 : bending, L= 1.052436*0.5/11.25, T= 0.5, T1=0.000, T2=0.000, K=0.00204, N=4,
+        method=intmeth;
+ BEND4 : bending, L= 1.052436*2.8/11.25, T= 2.8, T1=0.000, T2=0.000, K=0.00204, N=4,
+        method=intmeth;
+ BEND5 : bending, L= 1.052436*3.65/11.25, T= 3.65, T1=0.000, T2=0.000, K=0.00204, N=4,
+        method=intmeth,gap=tracy_gap;
+ BEND6 : bending, L= 1.052436*0.5/11.25, T= 0.5, T1=0.000, T2=5.67658, K=0.00204, N=4,
+        method=intmeth,gap=tracy_gap;
+	
+ BEND:  BEND2,BEND3,BEND4,BEND5,BEND4,BEND3,BEND6;
+
+
+
+{** Virtuals Skew quads **}
+Nsq = 1;
+SQ  : quadrupole, tilt=45.0, K= 0.0, method=intmeth,N=Nsq;
+NqS=1; {Number of slices}
+
+{** Sextupole **}
+dh=1.0;
+coef=1.00000E-10/0.16*5;
+method4sextu = 4;
+sextfringe = 0;
+NqSx=1; {Number of slices}
+
+  SX1 : sextupole, L=0.16, K =  3.010000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX2 : sextupole, L=0.16, K = -6.540000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX3 : sextupole, L=0.16, K = -3.380000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX4 : sextupole, L=0.16, K =  6.970000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX5 : sextupole, L=0.16, K = -7.140000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX6 : sextupole, L=0.16, K =  6.670000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX7 : sextupole, L=0.16, K = -9.920000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX8 : sextupole, L=0.16, K =  7.780000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+  SX9 : sextupole, L=0.16, K = -8.434125e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+ SX10 : sextupole, L=0.16, K =  5.063444e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+ SX11 : sextupole, L=0.16, K =  2.420000e+09*coef, method=method4sextu, N = NqSx, FF1=sextfringe, FF2=sextfringe; 
+
+S1:  SQ,SX1;
+S2:  SQ,SX2;
+S3:  SQ,SX3;
+S4:  SQ,SX4;
+S5:  SQ,SX5;
+S6:  SQ,SX6;
+S7:  SQ,SX7;
+S8:  SQ,SX8;
+S9:  SQ,SX9;
+S10: SQ,SX10;
+S11: SQ,SX11;
+
+{** Cavities **}
+CAV: Cavity, Frequency=352.202d6, Voltage=2.665d6, harnum=416;
+
+{** Horizontal correctors **}
+CH  : corrector, horizontal, method=intmeth;
+KCH  : corrector, horizontal, method=intmeth;
+
+{** Vertical correctors **}
+CV  : corrector, vertical, method=intmeth;
+
+{** Skew quads **}
+Nsq = 1;
+QT  : quadrupole, tilt=45.0, K= 0.0, method=intmeth,N=Nsq;
+
+QT1  : quadrupole, tilt=45.0, K= 0*(50e-4)/9.13, method=intmeth,N=Nsq;
+
+{** BPM **}
+BPM   : marker;
+
+{** Marker **}
+ SECT1:marker;
+ SECT2:marker;
+ SECT3:marker;
+ SECT4:marker;
+ SECT5:marker;
+ SECT6:marker;
+ SECT7:marker;
+ SECT8:marker;
+ SECT9:marker;
+ SECT10: marker;
+ SECT11: marker;
+ SECT12: marker;
+ BL31: marker;
+ FIN : marker;
+ DEBUT : marker;
+ sep1  : marker;
+ sep2  : marker;
+ eesep : marker;
+ sdm1  : marker;
+ sdm2  : marker;
+ eeSDM : marker;
+ sdc1 : marker;
+ sdc2 : marker;
+ mhu640: marker;
+ escrah: marker;
+ sscrah: marker;
+ sdl9e : marker;
+ sdl9s : marker;
+
+{**Superperiods**}
+
+SINJ1: SD1a,sep1,3*SEP,sep2,SD1e,SD1f, mhu640,SD1g,SD1h;
+
+SD13L: SD13c,sdm1, 13*SD13a,SD13b, SQ, SD13b,13*SD13a,
+       sdm2,eeSDM,SD13c;
+
+SDACL1: SDAC4,sdc1, 4*SDAC2, SDAC3, SQ, SDAC3, 4*SDAC2, sdc2 ,SDAC4;
+
+NANO: Q3N, SD14, BPM, Q2N,
+      SD3, S11, QT, CH, SD2, Q1N, BPM,
+      SDB1, SD1N, SQ, SD1N, BPM, QS1, SQ, SD2N, QS2, SQ,     
+      SD2N, QS1, BPM, SD1N, SQ, SD1N, SDB1,   
+      BPM, Q1N, SD2, S11, QT, CH, SD3, 
+      Q2N, BPM, SD14, Q3N;
+
+SUP1: KCH, KCH, KCH, SINJ1, BPM,Q1i, SD2, S1, QT, CH, SD3, Q2i,
+ BPM, SD14, Q3i, SD5, S2, CV, SD6, BEND,
+ SD7, Q4i, SD8, S3, BPM, SD9, Q5i, SD12,escrah, sscrah, 
+ S4, QT, CH, CV, BPM, SD10, Q51i, SD9, BPM, S3, SD8,
+ Q4, SD7, BEND, SD7,Q6, SD5, S5, CV, SD4, BPM, Q7,
+ SD3, S6, CH, SD2, Q8, BPM, 
+ SD13L,BPM,
+ Q8, SD2 ,S8, QT, CH, SD3, Q7, BPM, SD4, S7, CV,
+ SD5, Q6, SD7, BEND,
+ SD7 ,Q9, SD8, S9, CV, BPM, SD9, Q10, SD8, S10,
+ QT, CH, BPM, 
+ SDACL1, BPM,
+ S10, CH, SD8, Q10, SD9, BPM, S9, CV, SD8, Q9, SD7,
+ BEND, SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3, S8,
+ QT, CH, SD2, Q8, BPM, 
+ SDM, SQ, SDM,BPM,
+ Q8, SD2, S8, CH, SD3 ,Q7, BPM, SD4, S7, CV,
+ SD5, Q6, SD7, BEND,
+ SD7, Q9, SD8, S9, CV, BPM, SD9, Q10,
+ SD8, S10, CH, BPM, 
+ SDCA, SQ, SDCB, BPM,
+ S10, QT, CH, SD8, Q10, SD9, BPM, S9, CV, SD8,
+ Q9, SD7, BEND,
+ SD7, Q6, SD5, S7, SD4, CV, BPM, Q7, SD3,
+ S8, CH, SD2, Q8, BPM,
+ SDMA4, SQ, SDMB4, SDMC4, SQ, SDMD4,BPM,
+ Q8, SD2, S6, CH, SD3, Q7, BPM,
+ SD4, S5, CV, SD5, Q6, SD7,
+ BEND, SD7, Q4, SD8, S3, BPM,
+ SD9, Q5, SD10, BPM, S4, QT, CH, CV,  SD12, Q5, SD9, BPM,
+ S3, SD8, Q4, SD7,
+ BEND, SD6, S2, CV, SD5, Q3, SD14, BPM, Q2,
+ SD3, S1, QT, CH, SD2, Q1, BPM, SQ, SDL SQ;
+
+SUP2: SDL, SQ, BPM,
+ Q1, SD2, S1, QT, CH, SD3, Q2, BPM, SD14, Q3, SD5,
+ S2, CV, SD6,
+ BEND,  SD7, Q4, SD8, S3, BPM, SD9, Q5, SD12,
+ S4, QT, CH, CV, BPM, SD10, Q5, SD9, BPM, S3, SD8, Q4,
+ SD7,  BEND,  SD7,
+ Q6, SD5, S5, CV, BPM, SD4, Q7, SD3, S6, CH, BPM, SD2, Q8,
+ SDM, SQ,SDM,BPM,
+ Q8, SD2 ,S8, QT, CH, SD3, Q7, BPM, SD4, S7, CV, SD5, Q6,
+ SD7,  BEND,
+ SD7 ,Q9, SD8, S9, CV, BPM, SD9, Q10, SD8, S10, QT, CH, BPM, 
+ SDCA, SQ, SDCB, BPM,
+ S10, CH, SD8, Q10, SD9, BPM, S9, CV, SD8, Q9, SD7, BEND,
+ SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3, S8, QT, CH, SD2,
+ Q8, BPM, 
+ SDMA7,SQ, SDMB7, SDMC7, SQ, SDMD7 ,BPM,
+ Q8, SD2, S8, CH, SD3 ,Q7, BPM, SD4, S7, CV,
+ SD5, Q6, SD7, BEND,
+ SD7, Q9, SD8, S9 , CV, BPM, SD9, Q10,
+ SD8, S10, QT, CH, BPM,  
+ SDCA, SQ, SDCB, BPM,
+ S10, CH, SD8, Q10, SD9, BPM,  S9, CV, SD8,
+ Q9, SD7, BEND, SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3,
+ S8, CH, SD2, Q8, BPM,
+ SDMA8,SQ, SDMB8, SDMC8, SQ, SDMD8 ,BPM, Q8, SD2, S6,
+ CH, SD3, Q7, BPM,SD4, S5, CV, SD5, Q6, SD7, BEND,
+ SD7, Q4, SD8, S3, BPM,
+ SD9, Q51i, SD10, BPM, S4, QT, CH , CV, SD12, Q5i, SD9, BPM,
+ S3, SD8, Q4i, SD7, BEND,
+ SD6, S2, CV, SD5, Q3i, SD14, BPM, Q2i, SD3, S1, QT, CH,
+ SD2, Q1i, BPM, sdl9e, SDL ;
+
+SUP3N: SDL, sdl9s,BPM,
+ Q1i, SD2, S1, QT, CH, SD3, Q2i, BPM, SD14, Q3i, SD5,
+ S2, CV, SD6, BEND,
+ SD7, Q4i, SD8, S3, BPM, SD9, Q5i, SD12,
+ S4, QT, CH, CV, BPM, SD10, Q51i, SD9, BPM, S3, SD8, Q4,
+ SD7, BEND,  SD7,
+ Q6, SD5, S5,CV, SD4, BPM, Q7, SD3, S6, CH, SD2, Q8, BPM, 
+ SDMA10,SQ, SDMB10, SDMC10, SQ, SDMD10 ,BPM,
+ Q8, SD2 ,S8, QT, CH, SD3, Q7, BPM, SD4, S7, CV, SD5, Q6,SD7,BEND,
+ SD7 ,Q9, SD8, S9, CV, BPM, SD9, Q10, SD8, S10, QT, CH, BPM, 
+ SDCA, SQ, SDCB, BPM,
+ S10, CH, SD8, Q10, SD9, BPM, S9, CV, SD8, Q9, SD7, BEND,
+ SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3, S8, QT, CH, SD2,
+ Q8, BPM,
+ SDMA11, SDMB11, SDMC11, SQ, SDMD11 ,BPM,
+ Q8, SD2, S8, CH, SD3 ,Q7, BPM, SD4, S7, CV,
+ SD5, Q6, SD7,BEND,
+ SD7, Q9, SD8, S9, CV, BPM,  SD9, Q10,
+ SD8, S10, CH, BPM,
+ SDCA, SQ, SDCB, BPM,
+ S10, QT, CH, SD8, Q10, SD9, BPM, S9, CV, SD8,
+ Q9, SD7,BEND,
+ SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3,
+ S8, CH, SD2, BPM, Q8,
+ SDMA12,SQ, SDMB12, SDMC12, SQ, SDMD12 ,BPM,
+ Q8, SD2, S6, CH, SD3, Q7, BPM,
+ SD4, S5, CV, SD5, Q6, SD7,BEND,
+ SD7, Q4, SD8, S3, BPM,
+ SD9, Q5, SD10, BPM, S4, QT, CV, CH, SD12, Q5, SD9, BPM,
+ S3, SD8, Q4, SD7,
+ BEND,
+ SD6, S2, CV, SD5;
+
+SUP4N: SD5,
+ S2, CV, SD6, BEND,
+ SD7, Q4, SD8, S3, BPM, SD9, Q5, SD12,
+ S4, QT, CH, CV, BPM, SD10, Q5, SD9, BPM, S3, SD8, Q4,
+ SD7,  BEND, SD7,
+ Q6, SD5, S5,CV, SD4, BPM, Q7, SD3, S6, CH, SD2, Q8, BPM,
+SDMA14,SQ, SDMB14, SDMC14, SQ, SDMD14 ,BPM,
+ Q8, SD2 ,S8, QT, CH, SD3, Q7, BPM, SD4, S7, CV, SD5,
+ Q6, SD7, BEND,
+ SD7 ,Q9, SD8, S9, CV, BPM, SD9, Q10, SD8, S10, QT, CH, BPM, 
+ SDCA, SQ, SDCB, BPM,
+ S10, CH, SD8, Q10, SD9, BPM, S9, CV, SD8, Q9, SD7, BEND,
+ SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3, S8, QT, CH, SD2, Q8, BPM,
+SDMA15,SQ, SDMB15, SDMC15, SQ, SDMD15 ,BPM,
+ Q8, SD2, S8, CH, SD3 ,Q7, BPM, SD4, S7, CV,
+ SD5, Q6, SD7, BEND,
+ SD7, Q9, SD8, S9, CV, BPM, SD9, Q10,
+ SD8, S10, CH, BPM,
+ SDC, SQ, SDC, BPM,
+ S10, QT, CH, SD8, Q10, SD9, BPM, S9, CV, SD8,
+ Q9, SD7,BEND,
+ SD7, Q6, SD5, S7, CV, SD4, BPM, Q7, SD3,
+ S8, CH, SD2, Q8, BPM,
+ SDM, SQ, SDM,BPM,
+ Q8, SD2, S6, CH, SD3, Q7, BPM,
+ SD4, S5, CV, SD5, Q6, SD7, BEND,
+ SD7, Q4, SD8, S3, BPM,
+ SD9, Q51i, SD10, BPM, S4, QT, CH,CV, SD12, Q5i, SD9, BPM,
+ S3, SD8, Q4i, SD7, BEND,
+ SD6, S2, CV, SD5, Q3i, SD14, BPM, Q2i, SD3, S1, QT, CH,
+ SD2, Q1i, BPM, SDL;
+
+RING: DEBUT,SUP1,SUP2,SUP3N,NANO,SUP4N,CAV,FIN;
+
+{***** Define CELL structure ****}
+ CELL:  RING, symmetry = 1;
+
+end;
+

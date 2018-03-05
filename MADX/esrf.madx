@@ -1,0 +1,108 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++!
+!             MADX-PTC LATTICE OF THE ESR STORAGE RING                  !
+!                                                                       !
+!                       2009 MAIN FILE                                  !
+!            created by Andrea Franchi  (April 3rd 2009)                !
+!                                                                       !
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++!
+
+set,format="18.11g";
+
+!=======================================================================!
+!     DEFINE BEAM PARAMETERS                                            !
+!=======================================================================!
+Beam, particle = electron, energy=6.04, charge=-1, RADIATE;
+
+
+!=======================================================================!
+!     define RF cavity                                                  !
+!=======================================================================!
+RF_HARM=992;          ! [ ]
+RF_FREQ=RF_HARM/(844.3908608/clight*1e6); ! 352.19959398 [MHz]
+RFCAV : RFCAVITY, L=0.0,VOLT=8.0/16,LAG=0.25+0.220,HARMON=992, 
+	FREQ=RF_FREQ; 
+
+!=======================================================================!
+!     include file with S.R. lattice sequence and strengths             !
+!=======================================================================!
+call,  file = 'storage_2009.seqx';
+
+
+!=======================================================================!
+!     CALL BEAM AND SEQUENCE                                            !
+!=======================================================================!
+!beam; USE, sequence=STORAGE04;
+
+!-------- twiss of a sequence -------------
+!select,flag=twiss,clear;
+!select,flag=twiss,column=name,s,x,px,BETX,BETY,ALFX,ALFY,MUX,MUY;
+!twiss,centre,DELTAP=0,table=twiss,file="twiss_seq.txt";
+
+
+!=======================================================================!
+!     EMIT WITH A SEQUENCE (see  'storage_2009.seqx')                   !
+!=======================================================================!
+beam;
+USE, sequence=STORAGE04;
+twiss;
+EMIT,DELTAP=0.00;
+!stop;
+
+
+
+
+!============= PTC matching =======================================
+/*
+!---------- Define macro for linear optics with ptc -------
+ptctwiss_par: 
+	macro={
+		ptc_create_universe;
+		ptc_create_layout,time=true,model=2,method=6,nst=6;
+		!select,flag=ptc_twiss,clear;	
+		!ptc_twiss,closed_orbit,file=storage-twiss.ptc;
+	        !ptc_twiss,closed_orbit,icase=4,no=1;
+	  	select_ptc_normal,q1=0,q2=0;
+		ptc_align;
+	  	ptc_normal,closed_orbit,normal,icase=4,no=1;
+	  	ptc_end;
+	  	qx0 =table(normal_results,value, 1);
+	  	qy0 =table(normal_results,value, 2);
+	};
+exec,ptctwiss_par;
+value,qx0,BEND_K1A;
+value,qy0,BEND_K1B;
+stop;
+match,use_macro;
+	vary, name=K1.QD3;
+       vary, name=K1.QF7;
+       use_macro,name=ptctwiss_par;
+       constraint,expr= qx0= 36.440;	
+       constraint,expr= qy0= 13.390;
+	jacobian,calls=5,bisec=3;
+endmatch;
+value,qx0,K1.QD3;
+value,qy0,K1.QF7;
+stop;
+*/
+
+!=============== MULTIPARTICLE PTC TRACTING (WITH RADIATION) ======
+ptc_create_universe;
+ptc_create_layout,time=true,model=2,method=6,nst=6;
+	!----- PTC 6D TWISS ------------------------------
+	!select,flag=ptc_twiss, clear;
+	!select,flag=ptc_twiss, column=name, s,beta11,beta22,beta33,
+	!					alfa11,alfa22,alfa33,
+	!				 	mu1,mu2,mu3;
+	!ptc_twiss,closed_orbit,icase=6,no=5,file=twiss_ptc.ptc;
+	!stop;
+!------- PTC track ---------------------------------------
+ptc_start,X= 0e-6,PX= 0e-7,  Y= 0.0, PY= 0.0, T=0.e-6, PT=0.e-6 ; 
+PTC_OBSERVE, place=RING.START;
+PTC_TRACK, deltap=0.0000,element_by_element,icase=6,norm_no=2,
+          CLOSED_ORBIT,turns=10,ffile=1,
+	   radiation, radiation_model1, RADIATION_ENERGY_LOSS,
+          file=tracking_rad.,onetable,dump;
+PTC_TRACK_END;
+PTC_END;
+!========== END OF MULTIPARTICLE PTC TRACKING (WITH RADIATION) ====
+

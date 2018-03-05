@@ -1,0 +1,458 @@
+!=================================
+! %% charge in the beam; single microbunch
+!=================================
+! q: charge, total=1.6675e-10
+ q: charge, total=1.18e-8
+
+!===================
+!  %% Cavity
+!==================
+! If Voltage zero, then 4D tracking
+! for 4D 
+!CAV:RFCA, VOLT=0.0e+6,FREQ=3.521970e+08,PHASE=161.9171 
+CAV:RFCA, VOLT=3.0e+6,FREQ=3.521970e+08,PHASE=161.9171 
+
+
+!half of SDAC1
+ SDAC1h: EDRIFT,l= 0.74214
+!half of SD13a
+ SD13ah: EDRIFT,l=1.570726
+ 
+!============================= 
+!  =  Marker and apertures =
+!=============================
+SECT1: MARK
+SECT2: MARK
+SECT3: MARK
+SECT4: MARK
+DEBUT: MARK
+FIN: MARK  
+
+INJ: MAXAMP,X_MAX=0.035,Y_MAX=0.0125
+
+!==========================
+! %% Injection section
+!=========================
+PtINJ: MARK
+K1: MARK
+K2: MARK
+K3: MARK
+K4: MARK
+
+!================
+!  = BPM =
+!================
+BPM: MARK
+
+!================
+!  = For fitting =
+!================
+M1: MARK, FITPOINT=1
+M2: MARK, FITPOINT=1
+M3: MARK, FITPOINT=1
+
+!=====================
+!  = DRIFT SPACES =
+!=====================
+SD1a:  EDRIFT, L= 1.4125
+SD1b:  EDRIFT, L= 0.7575
+SD2:   EDRIFT, L= 0.289900
+SD3:   EDRIFT, L= 0.101900
+SD5:   EDRIFT, L= 0.099900
+SD6:   EDRIFT, L= 0.71000
+SD7:   EDRIFT, L= 0.419900
+SD8:   EDRIFT, L= 0.0999000
+SD12:  EDRIFT, L= 0.36990
+SD1d:  EDRIFT, L= 0.5170
+SD14a: EDRIFT, L= 0.38500000
+SD9a:  EDRIFT, L= 0.204200	
+SD10a: EDRIFT, L= 0.172300	
+SDAC1: EDRIFT, L= 1.48428	
+SD13a: EDRIFT, L= 3.141452 	
+SD1e:  EDRIFT, L= 5.6589
+SD1c1: EDRIFT, L= 0.8410
+SD1c2: EDRIFT, L= 0.601
+SD1c3: EDRIFT, L= 1.560
+SD91:  EDRIFT, L= 0.251240
+SD41:  EDRIFT, L= 0.1721
+SD42:  EDRIFT, L= 0.125
+SD92:  EDRIFT, L= 0.204300
+SD93:  EDRIFT, L= 0.251300	
+SD43:  EDRIFT, L= 0.1251	
+SD141: EDRIFT, L= 0.431900
+SDB1:  EDRIFT, L= 0.29100
+SDB2:  EDRIFT, L= 0.16680000
+SDB3:  EDRIFT, L= 0.172
+SDB4:  EDRIFT, L= 0.1976
+SDB5:  EDRIFT, L= 0.125
+SDB6:  EDRIFT, L= 0.119800
+SDB7:  EDRIFT, L= 0.166900
+SDB8:  EDRIFT, L= 0.172 
+SDB9:  EDRIFT, L= 0.119800 
+SDB10: EDRIFT, L= 0.166900 
+SDB11: EDRIFT, L= 0.1719
+SDB12: EDRIFT, L= 0.1249
+SDB13: EDRIFT, L= 0.119800
+SDB14: EDRIFT, L= 0.1668000
+SDB15: EDRIFT, L= 0.172
+SDB17: EDRIFT, L= 0.125
+SDB18: EDRIFT, L= 0.1199000 
+SDC1:  EDRIFT, L= 0.241900
+SDC2:  EDRIFT, L= 0.079 
+SDC3:  EDRIFT, L= 0.07845
+SDC4:  EDRIFT, L= 0.2558
+SDC5:  EDRIFT, L= 0.0846
+SDC6:  EDRIFT, L= 0.079
+SDC7:  EDRIFT, L= 0.262
+SDC8:  EDRIFT, L= 0.241900
+SDC9:  EDRIFT, L= 0.079  
+SDC10: EDRIFT, L= 0.07845
+SDC11: EDRIFT, L= 0.2419000 
+SDC12: EDRIFT, L= 0.2558
+SDC13: EDRIFT, L= 0.0846 
+SDC14: EDRIFT, L= 0.0788 
+SDC15: EDRIFT, L= 0.2622
+SDC16: EDRIFT, L= 0.241900 
+SDC17: EDRIFT, L= 0.079  
+SDC18: EDRIFT, L= 0.07845
+SDC19: EDRIFT, L= 0.24190
+SDC20: EDRIFT, L= 0.241900
+SDC21: EDRIFT, L= 0.079  
+SDC22: EDRIFT, L= 0.29090
+SDC24: EDRIFT, L= 1.379  
+!SDC23a: EDRIFT,L= 0.632 ! BPM - K1
+SDC23b: EDRIFT, L= 1.983  ! K1 - KEMV
+SDC23c: EDRIFT, L= 1.019  ! KEMV - K2
+SDC23d: EDRIFT, L= 0.676  ! K2 - FCOR
+SDC23e: EDRIFT, L= 0.147  ! BPM - FCOR [1 1]
+SDC23f: EDRIFT, L= 0.485  ! FCOR [1 1] next SD
+
+!================================
+! =  HU640 straight section =
+!================================
+SDHU640a: EDRIFT,  L=1.7394
+SDHU640b: EDRIFT,  L=0.64
+SDHU640c: EDRIFT,  L=3.2795
+SDHU640d: EDRIFT,  L=3.1195
+SDHU640e: EDRIFT,  L=0.64
+SDHU640f: EDRIFT,  L=1.8994
+
+!=================================================
+!  =  QUADRUPOLES =  
+!(compensation de l'effet des défauts de focalisation des
+!==================================================
+
+Q1:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1163982E+01,SYNCH_RAD=0,ISR=0
+Q2:     KQUAD, N_KICKS=30, L= 0.4962,  K1= 0.1684902E+01,SYNCH_RAD=0,ISR=0
+Q3:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.6879196E+00,SYNCH_RAD=0,ISR=0
+Q4:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1210454E+01,SYNCH_RAD=0,ISR=0
+Q5:     KQUAD, N_KICKS=30, L= 0.3602,  K1= 0.1699787E+01,SYNCH_RAD=0,ISR=0
+Q6:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1172340E+01,SYNCH_RAD=0,ISR=0
+Q7:     KQUAD, N_KICKS=30, L= 0.4962,  K1= 0.2016438E+01,SYNCH_RAD=0,ISR=0
+Q8:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1324658E+01,SYNCH_RAD=0,ISR=0
+Q9:     KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1375764E+01,SYNCH_RAD=0,ISR=0
+Q10:    KQUAD, N_KICKS=30, L= 0.3602,  K1= 0.1734734E+01,SYNCH_RAD=0,ISR=0
+Q11:    KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1693858E+01,SYNCH_RAD=0,ISR=0
+Q12:    KQUAD, N_KICKS=30, L= 0.4962,  K1= 0.1694249E+01,SYNCH_RAD=0,ISR=0
+
+Q1n:    KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1272138E+01,SYNCH_RAD=0,ISR=0 ! upstream and downstream nanoscopiumstraight section
+Q2n:    KQUAD, N_KICKS=30, L= 0.4962,  K1= 0.1860390E+01,SYNCH_RAD=0,ISR=0
+Q3n:    KQUAD, N_KICKS=30, L= 0.3602,  K1=-0.1142906E+01,SYNCH_RAD=0,ISR=0
+
+
+!================================================
+!SEXTUPOLES chromaticités nulles dans TracyII
+!avec defauts de focalisation des dipoles
+!P. Brunelle 02/05/06
+!================================================
+S1:  KSEXT, L= 0.16,  K2=  18.7500,  SYNCH_RAD=0,ISR=0
+S2:  KSEXT, L= 0.16,  K2= -44.6875,  SYNCH_RAD=0,ISR=0
+S3:  KSEXT, L= 0.16,  K2= -21.1250,  SYNCH_RAD=0,ISR=0
+S4:  KSEXT, L= 0.16,  K2=  43.5625,  SYNCH_RAD=0,ISR=0
+S5:  KSEXT, L= 0.16,  K2= -42.0000,  SYNCH_RAD=0,ISR=0
+S6:  KSEXT, L= 0.16,  K2=  41.6875,  SYNCH_RAD=0,ISR=0
+S7:  KSEXT, L= 0.16,  K2= -62.0000,  SYNCH_RAD=0,ISR=0
+S8:  KSEXT, L= 0.16,  K2=  48.6250,  SYNCH_RAD=0,ISR=0
+S9:  KSEXT, L= 0.16,  K2= -49.4375,  SYNCH_RAD=0,ISR=0
+S10: KSEXT, L= 0.16,  K2=  29.2500,  SYNCH_RAD=0,ISR=0
+S11: KSEXT, L= 0.16,  K2=  18.7500,  SYNCH_RAD=0,ISR=0 
+S12: KSEXT, L= 0.16,  K2=  00.0000,  SYNCH_RAD=0,ISR=0 
+
+!===============================
+!  %% Skew quadrupole
+!  rotation angle: 45 degree
+!===============================
+QT: KSEXT, L= 0.0,  K2=   0.0, TILT = 0.7854    SYNCH_RAD=0,ISR=0 
+
+!===========================
+! Slow feedback correctors
+!==========================
+COR: KICKER
+
+!==========================
+! Machine study kickers
+!=========================
+KEMH: KICKER
+KEMV: KICKER
+
+!=================
+! HU640
+!=================
+HCMHU640: KICKER
+VCMHU640: KICKER
+
+HU640upstream:  LINE = (SDHU640a, VCMHU640, SDHU640b, HCMHU640, SDHU640c)
+HU640downstream: LINE= (SDHU640d, HCMHU640, SDHU640e, VCMHU640, SDHU640f)
+
+!===========================
+! Fast feedback correctors
+!===========================
+FCOR: KICKER
+
+SX1:   LINE= ( S1,  COR,  QT)
+SX2:   LINE= ( S2,  COR,  QT)
+SX3:   LINE= ( S3,  COR,  QT)
+SX4:   LINE= ( S4,  COR,  QT)
+SX5:   LINE= ( S5,  COR,  QT)
+SX6:   LINE= ( S6,  COR,  QT)
+SX7:   LINE= ( S7,  COR,  QT)
+SX8:   LINE= ( S8,  COR,  QT)
+SX9:   LINE= ( S9,  COR,  QT)
+SX10:  LINE= (S10, COR,  QT)
+SX11:  LINE= (S11, COR,  QT)
+SX12:  LINE= (S12, COR,  QT)
+
+!===================
+!  %% DIPOLES
+!===================
+BEND:CSBEND,L=1.05243,N_KICKS=100,ANGLE=0.1963, E1=0.0976, E2=0.0991, K1=0.00204,HGAP=0.0268
+
+!===================
+!  %% Nanoscopium straight section
+!===================
+
+! NANOC magnets for nanoscopium
+! Tuners
+! CHINANO   = corrector('NANOC',0.0,[0 0],'CorrectorPass'); % tuning magnet
+! Main magnets
+CHINANOD1:  CSBEND,L=0.069,N_KICKS=10,ANGLE=-0.50e-3, E1=0.0, E2=-0.50e-3, K1=0.0,HGAP=0
+CHINANOD2:  CSBEND,L=0.069,N_KICKS=10,ANGLE=-5.38e-3, E1=-0.50e-3, E2=-5.88e-3, K1=0.0,HGAP=0 
+CHINANOD3:  CSBEND,L=0.138,N_KICKS=10,ANGLE=11.88e-3, E1=-5.88e-3, E2=+6.00e-3, K1=0.0,HGAP=0
+CHINANOD4:  CSBEND,L=0.069,N_KICKS=10,ANGLE=-6.00e-3, E1=6.00e-3, E2=0.00e-3, K1=0.0,HGAP=0
+
+
+! Nanoscopium straigths (upstream)
+SDNANO1:  EDRIFT,L =0.4156                 ! BPM - CHI.1
+SDNANO2 :  EDRIFT,L =0.5184                      ! CHI.1 - FFWDCOR
+SDNANO3:  EDRIFT,L = 2.5630                   ! FFWDCOR - FFWDCOR
+SDNANO4 :  EDRIFT,L =0.3985                      ! FFWDCOR - CHI.2
+SDNANO5 :  EDRIFT,L =0.2338                       ! CHI.2 - BPM
+SDNANO6 :  EDRIFT,L =0.0780                     ! BPM - FCOR
+SDNANO6a:  EDRIFT,L =0.2436               ! BPM - Q11.1
+
+SDNANO7:  EDRIFT,L =0.1499                  ! Q11.1 - S12
+SDNANO8:  EDRIFT,L =0.1519                    ! S12 - Q11
+
+! Nanoscopium straigths (downstream)
+SDNANO9 :  EDRIFT,L =0.2047                     ! Q11.2 - FOFB
+SDNANO10:  EDRIFT,L =0.2382                    ! BPM - CHI.3
+SDNANO11:  EDRIFT,L =0.3640                      ! FFWDCOR - FFWDCOR
+
+SDL13u:   LINE= (SDNANO1, CHINANOD1, SDNANO2,  SDNANO3, SDNANO4, CHINANOD2, SDNANO5, BPM, SDNANO6, FCOR,SDNANO6a, Q11, SDNANO7, SX12, SDNANO8)
+SDL13d:  LINE= (SDNANO8, SX12, SDNANO7, Q11, SDNANO9, FCOR, SDNANO6, BPM, SDNANO10, CHINANOD3, SDNANO11,SDNANO3, SDNANO2,CHINANOD4, SDNANO1)
+SDL13:  LINE= (SDL13u, Q12, SDL13d)
+
+!========================
+! %% Undulator
+!========================
+
+WSV50: CWIGGLER,L=1.9,PERIODS=38,bmax=2.1,sinusoidal=1,synch_rad=1,isr=0,integration_order=4,&
+        steps_per_period=20
+SD13aw: EDRIFT, L= 2.191452 	
+
+
+!========================
+! %% Lattice
+!========================
+
+
+!=========================
+!  % Superperiods
+!========================
+SUP1:  LINE= (&
+    SD1a,   PtINJ,   SD1b,   K3,  SD1c1, FCOR,  SD1c2,  KEMH, SD1c3,   K4,     SD1d, &
+    BPM,  SDB1,     Q1,     SD2,    SX1,   SD3,     Q2, &
+    SDB2,  BPM,    SD14a,   Q3,      SD5,    SX2,    SD6, &
+    BEND,    SD7,     Q4,  SD8,     SX3,    &
+    SDB3,  BPM,     SD9a,   Q5,     SD12,  SX4, &
+    SDB4,  BPM,     SD10a,    Q5,     SD91,     &
+    BPM,  SDB5,  SX3,    SD8,   Q4,      SD7,     BEND, &
+    SD7,     Q6,      SD5,    SX5,     SD41,    &
+    BPM,  SDB6,  Q7,    SD3,     SX6,      SD2,     Q8, &
+    SDC1, FCOR, SDC2,   BPM,    SD13a, M1, SD13a, BPM, &
+    SDC3,    FCOR,   SDC1, &
+    Q8,      SD2,    SX8,     SD3,    Q7,  SDB7, &
+    BPM,   SD42,     SX7,      SD5,     Q6,     SD7, &
+    BEND,   SD7,    Q9,    SD8,     SX9,  SDB8, &
+    BPM,     SD9a,    Q10,    SD8,     SX10,  SDC4,  &
+    FCOR, SDC5,  BPM,   SDAC1,  M2,  SDAC1, &
+    BPM,   SDC6,  FCOR,  SDC7, SX10,    SD8,    Q10,    SD91, &
+    BPM,   SD42,  SX9,      SD8,     Q9,     SD7,    &
+    BEND,   SD7,    Q6,    SD5,     SX7,    SD41,   &
+    BPM,  SDB9,  Q7,      SD3,    SX8,    SD2,   Q8, SDC8, &
+    FCOR,  SDC9,  BPM,     SD13a,  M3,  SD13a,  &
+    BPM,  SDC10,   FCOR,  SDC11,  Q8,     SD2,   SX8,   SD3,   Q7, &
+    SDB10,  BPM,   SD42,    SX7,    SD5,   Q6,      SD7,  &
+    BEND,    SD7,     Q9,     SD8,     SX9,  SDB11,    &
+    BPM,    SD92,   Q10,     SD8,     SX10, SDC12, &
+    FCOR,  SDC13,  BPM,    SDAC1,    SDAC1,   &
+    BPM,  SDC14,  FCOR,   SDC15,   SX10,   SD8,     Q10,    SD93, &
+    BPM,  SDB12,  SX9,    SD8,   Q9,      SD7, &
+    BEND,    SD7,    Q6,      SD5,    SX7,    SD41, &
+    BPM,  SDB13,   Q7,      SD3,    SX8,     SD2,    Q8,  SDC16, &
+    FCOR, SDC17,  BPM,    SD13a, SD13a,   &
+    BPM,   SDC18,  FCOR,  SDC19,   Q8,     SD2,     SX6,    SD3,    Q7, &
+    SDB14,  BPM,    SD43,    SX5,     SD5,    Q6,      SD7,    &
+    BEND,   SD7,   Q4,      SD8,     SX3,  SDB15, &
+    BPM,     SD9a,   Q5,      SD12,   &
+    SX4,  SDB4,  BPM,     SD10a, Q5,     SD93, &
+    BPM,  SDB17,  SX3,     SD8,    Q4,     SD7,   &
+    BEND,   SD6,     SX2,      SD5,     Q3,     SD141, &
+    BPM,  SDB18,  Q2,     SD3,   SX1,     SD2,     Q1, &
+    SDC20, FCOR,  SDC21,   BPM,     HU640upstream)
+
+SUP2:  LINE= (  &
+    HU640downstream,  BPM, SDC2, FCOR, SDC1,   &
+    Q1,     SD2,    SX1,   SD3,     Q2, &
+    SDB7,  BPM,    SD14a,   Q3,      SD5,    SX2,    SD6, &
+    BEND,    SD7,     Q4,  SD8,     SX3,    &
+    SDB3,  BPM,     SD9a,   Q5,     SD12,  SX4, &
+    SDB4,  BPM,     SD10a,    Q5,     SD93,     &
+    BPM,  SDB5,  SX3,    SD8,   Q4,      SD7,     BEND, &
+    SD7,     Q6,      SD5,    SX5,     SD41,    &
+    BPM,  SDB6,  Q7,    SD3,     SX6,      SD2,     Q8, &
+    SDC1, FCOR, SDC2,   BPM, &
+    SD13a,  SD13a,  BPM, &
+    SDC2,    FCOR,   SDC1, &
+    Q8,      SD2,    SX8,     SD3,    Q7,  SDB7, &
+    BPM,   SDB5,     SX7,      SD5,     Q6,     SD7, &
+    BEND,   SD7,    Q9,    SD8,     SX9,  SDB3, &
+    BPM,     SD9a,    Q10,    SD8,     SX10,  SDC4,  &
+    FCOR, SDC5,  BPM,   SDAC1,    SDAC1, &
+    BPM,   SDC14,  FCOR,  SDC15, SX10,    SD8,    Q10,    SD93, &
+    BPM,   SDB12,  SX9,      SD8,     Q9,     SD7,    &
+    BEND,   SD7,    Q6,    SD5,     SX7,    SD41,   &
+    BPM,  SDB6,  Q7,      SD3,    SX8,    SD2,   Q8, SDC1, &
+    FCOR,  SDC2,  BPM,     SD13a,  SD13a,  &
+    BPM,  SDC2,   FCOR,  SDC1,  Q8,     SD2,   SX8,   SD3,   Q7, &
+    SDB7,  BPM,   SDB5,    SX7,    SD5,   Q6,      SD7,  &
+    BEND,    SD7,     Q9,     SD8,     SX9,   SDB3,    &
+    BPM,    SD9a,   Q10,     SD8,     SX10,  SDC4, &
+    FCOR,  SDC5,  BPM,    SDAC1,    SDAC1,   &
+    BPM,  SDC14,  FCOR,   SDC15,   SX10,   SD8,     Q10,    SD93, &
+    BPM,  SDB12,  SX9,    SD8,   Q9,      SD7, &
+    BEND,    SD7,    Q6,      SD5,    SX7,    SD41, &
+    BPM,  SDB6,   Q7,      SD3,    SX8,     SD2,    Q8,  SDC1, &
+    FCOR, SDC2,  BPM,    SD13a,   SD13a,   BPM, &  
+    SDC2,  FCOR,  SDC1,   Q8,     SD2,     SX6,    SD3,    Q7, &
+    SDB7,  BPM,    SD42,    SX5,     SD5,    Q6,      SD7,    &
+    BEND,   SD7,   Q4,      SD8,     SX3,  SDB3, &
+    BPM,     SD9a,   Q5,      SD12,   &
+    SX4,   SDB4,  BPM,     SD10a,   Q5,     SD93, &
+    BPM,  SD42,  SX3,     SD8,    Q4,     SD7,   &
+    BEND,    SD6,     SX2,      SD5,     Q3,     SD141, &
+    BPM,  SDB18,  Q2,     SD3,   SX1,     SD2,     Q1, &
+    SDC1, FCOR,  SDC2,   BPM,     SD1e)
+
+SUP3:  LINE= (  &
+    SD1e,  BPM, SDC2, FCOR, SDC1,   &
+    Q1,     SD2,    SX1,   SD3,     Q2, &
+    SDB7,  BPM,    SD14a,   Q3,      SD5,    SX2,    SD6, &
+    BEND,    SD7,     Q4,  SD8,     SX3,    &
+    SDB3,  BPM,     SD9a,   Q5,     SD12,  SX4, &
+    SDB4,  BPM,     SD10a,    Q5,     SD93,     &
+    BPM,  SDB5,  SX3,    SD8,   Q4,      SD7,     BEND, &
+    SD7,     Q6,      SD5,    SX5,     SD41,    &
+    BPM,  SDB6,  Q7,    SD3,     SX6,      SD2,     Q8, &
+    SDC1, FCOR, SDC2,   BPM,    SD13a,  SD13a,  BPM, &
+    SDC2,    FCOR,   SDC1, &
+    Q8,      SD2,    SX8,     SD3,    Q7,  SDB7, &
+    BPM,   SDB5,     SX7,      SD5,     Q6,     SD7, &
+    BEND,   SD7,    Q9,    SD8,     SX9,  SDB3, &
+    BPM,     SD9a,    Q10,    SD8,     SX10,  SDC4,  &
+    FCOR, SDC5,  BPM,   SDAC1,    SDAC1, &
+    BPM,   SDC14,  FCOR,  SDC15, SX10,    SD8,    Q10,    SD93, &
+    BPM,   SDB12,  SX9,      SD8,     Q9,     SD7,    &
+    BEND,   SD7,    Q6,    SD5,     SX7,    SD41,   &
+    BPM,  SDB6,  Q7,      SD3,    SX8,    SD2,   Q8, SDC1, &
+    FCOR,  SDC2,  BPM,     SD13a,  SD13a,  &
+    BPM,  SDC2,   FCOR,  SDC1,  Q8,     SD2,   SX8,   SD3,   Q7, &
+    SDB7,  BPM,   SDB5,    SX7,    SD5,   Q6,      SD7,  &
+    BEND,    SD7,     Q9,     SD8,     SX9,   SDB3,    &
+    BPM,    SD9a,   Q10,     SD8,     SX10,  SDC4, &
+    FCOR,  SDC5,  BPM,    SDAC1,    SDAC1,   &
+    BPM,  SDC14,  FCOR,   SDC15,   SX10,   SD8,     Q10,    SD93, &
+    BPM,  SDB12,  SX9,    SD8,   Q9,      SD7, &
+    BEND,    SD7,    Q6,      SD5,    SX7,    SD41, &
+    BPM,  SDB6,   Q7,      SD3,    SX8,     SD2,    Q8,  SDC1, &
+    FCOR, SDC2,  BPM,    SD13a,   SD13a,   &
+    BPM, SDC2,  FCOR,  SDC1,   Q8,     SD2,     SX6,    SD3,    Q7, &
+    SDB7,  BPM,    SD42,    SX5,     SD5,    Q6,      SD7,    &
+    BEND,   SD7,   Q4,      SD8,     SX3,  SDB3, &
+    BPM,     SD9a,   Q5,      SD12,   &
+    SX4,   SDB4,  BPM,     SD10a,    Q5,     SD93, &
+    BPM,  SD42,  SX3,     SD8,    Q4,     SD7,   &
+    BEND,    SD6,     SX2,      SD5,     Q3n,     SD141, &
+    BPM,  SDB18,  Q2n,     SD3,   SX11,     SD2,     Q1n, &
+    SDC1, FCOR,  SDC2,   BPM)
+
+SUP4:   LINE = (  &
+    BPM, SDC2, FCOR, SDC1,   &
+    Q1n,     SD2,    SX11,   SD3,     Q2n, &
+    SDB7,  BPM,    SD14a,   Q3n,      SD5,    SX2,    SD6, &
+    BEND,    SD7,     Q4,  SD8,     SX3,    &
+    SDB3,  BPM,     SD9a,   Q5,     SD12,  SX4, &
+    SDB4,  BPM,     SD10a,    Q5,     SD93,     &
+    BPM,  SDB5,  SX3,    SD8,   Q4,      SD7,     BEND, &
+    SD7,     Q6,      SD5,    SX5,     SD41,    &
+    BPM,  SDB6,  Q7,    SD3,     SX6,      SD2,     Q8, &
+    SDC1, FCOR, SDC2,   BPM,    SD13a,  SD13a,  BPM, &
+    SDC2,    FCOR,   SDC1, &
+    Q8,      SD2,    SX8,     SD3,    Q7,  SDB7, &
+    BPM,   SDB5,     SX7,      SD5,     Q6,     SD7, &
+    BEND,   SD7,    Q9,    SD8,     SX9,  SDB3, &
+    BPM,     SD9a,    Q10,    SD8,     SX10,  SDC4,  &
+    FCOR, SDC5,  BPM,   SDAC1,    SDAC1, &
+    BPM,   SDC14,  FCOR,  SDC15, SX10,    SD8,    Q10,    SD93, &
+    BPM,   SDB12,  SX9,      SD8,     Q9,     SD7,    &
+    BEND,   SD7,    Q6,    SD5,     SX7,    SD41,   &
+    BPM,  SDB6,  Q7,      SD3,    SX8,    SD2,   Q8, SDC1, &
+    FCOR,  SDC2,  BPM,     SD13a,  SD13a,  &
+    BPM,  SDC2,   FCOR,  SDC1,  Q8,     SD2,   SX8,   SD3,   Q7, &
+    SDB7,  BPM,   SDB5,    SX7,    SD5,   Q6,      SD7,  &
+    BEND,    SD7,     Q9,     SD8,     SX9,   SDB3,    &
+    BPM,    SD9a,   Q10,     SD8,     SX10,  SDC4, &
+    FCOR,  SDC5,  BPM,    SDAC1,    SDAC1,   &
+    BPM,  SDC14,  FCOR,   SDC15,   SX10,   SD8,     Q10,    SD93, &
+    BPM,  SDB12,  SX9,    SD8,   Q9,      SD7, &
+    BEND,    SD7,    Q6,      SD5,    SX7,    SD41, &
+    BPM,  SDB6,   Q7,      SD3,    SX8,     SD2,    Q8,  SDC1, &
+    FCOR, SDC2,  BPM,    SD13a,   SD13a,   &
+    BPM,   SDC2,  FCOR,  SDC1,   Q8,     SD2,     SX6,    SD3,    Q7, &
+    SDB7,  BPM,    SD42,    SX5,     SD5,    Q6,      SD7,    &
+    BEND,   SD7,   Q4,      SD8,     SX3,  SDB3, &
+    BPM,     SD9a,   Q5,      SD12,   &
+    SX4,   SDB4,  BPM,     SD10a,    Q5,     SD93, &
+    BPM,  SD42,  SX3,     SD8,    Q4,     SD7,   &
+    BEND,    SD6,     SX2,      SD5,     Q3,     SD141, &
+    BPM,  SDB18,  Q2,     SD3,   SX1,     SD2,     Q1, &
+    SDC22,   BPM,  SDC23e,  FCOR, SDC23f, K1, SDC23b, &
+    KEMV, SDC23c, K2, SDC23d, SDC24)
+
+MAL: malign, on_pass=1
+w1: watch,filename="%s.w1",mode="centroid"
+
+
+RING:  LINE=(DEBUT, MAL, w1, INJ, SECT1, SUP1, SECT2, SUP2, SECT3, SUP3, SECT4, SDL13, SUP4, CAV, FIN)
+RING0:  LINE=(DEBUT, MAL, w1, INJ, SECT1, SUP1, SECT2, SUP2, SECT3, SUP3, SECT4, SDL13, SUP4, FIN)
+
